@@ -1,0 +1,38 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1; 
+}
+
+header {
+    position: sticky;
+    left: 0;
+    top: 0;
+    width:auto;
+    color: white;
+    background-color:darkolivegreen;
+    padding: 1em;
+    text-align: left;
+}
+
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color:darkolivegreen;
+    padding: 1em;
+    text-align: center;
+}
+

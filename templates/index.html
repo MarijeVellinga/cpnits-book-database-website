@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Nieuw boek toevoegen</h2>
+<form method="POST">
+    <input type="text" name="titel" placeholder="Boektitel" required>
+    <input type="text" name="voornaam" placeholder="Voornaam auteur">
+    <input type="text" name="achternaam" placeholder="Achternaam auteur" required>
+    <input type="text" name="genre" placeholder="Genre">
+    <input type="date" name="datum_begonnen" placeholder="Begonnen op..." required>
+    <input type="date" name="datum_uitgelezen" placeholder="Uitgelezen op...">
+    
+    <textarea name="review" placeholder="Wat vond je ervan?" required></textarea>
+    <button type="submit">Toevoegen</button>
+</form>
+
+<hr>
+
+<h2>Zoeken en sorteren</h2>
+<form method="POST">
+    <input type="text" name="zoekterm" value="{{ zoekterm }}" placeholder="Zoek op titel of achternaam auteur">
+    <select name="sorteer">
+        <option value="titel_asc" {% if sorteer_op == "titel_asc" %}selected{% endif %}>Titel A-Z</option>
+        <option value="titel_desc" {% if sorteer_op == "titel_desc" %}selected{% endif %}>Titel Z-A</option>
+        <option value="datum_nieuwste" {% if sorteer_op == "datum_nieuwste" %}selected{% endif %}>Nieuwste eerst</option>
+        <option value="datum_oudste" {% if sorteer_op == "datum_oudste" %}selected{% endif %}>Oudste eerst</option>
+    </select>
+    <button type="submit">Zoek</button>
+</form>
+
+<hr>
+
+<h2>Gelezen boeken</h2>
+<ul>
+    {% for boek in boeken %}
+        <li>
+            <strong>{{ boek[1] }}</strong> door {{ boek[2] }} {{ boek[3] }}<br>
+            Review: {{ boek[4] if boek[4] else "Geen review gevonden" }}
+            <form method="POST" style="display:inline;">
+                <input type="hidden" name="boek_id" value="{{ boek[0] }}">
+
+                <button type="submit" name="actie" value="verwijder" onclick="return confirm('Weet je zeker dat je dit boek wilt verwijderen?');">Verwijder</button>
+                <button type="submit" name="actie" value="update">Update</button>
+            </form>
+        </li>
+    {% else %}
+        <li>Geen boeken gevonden.</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

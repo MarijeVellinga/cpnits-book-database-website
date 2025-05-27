@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Boek bijwerken{% endblock %}
+
+{% block content %}
+<h2>Boek bijwerken</h2>
+<form method="POST">
+    <input type="text" name="titel" value="{{ boek[1] }}" required>
+    <input type="text" name="voornaam" value="{{ boek[2] }}">
+    <input type="text" name="achternaam" value="{{ boek[3] }}">
+    <textarea name="review">{{ boek[4] }}</textarea>
+    <button type="submit">Opslaan</button>
+</form>
+{% endblock %}

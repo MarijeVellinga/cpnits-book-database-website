@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='images/favicon.ico')}}">
+    <meta charset="UTF-8">
+    <title>{% block title %}Boekenapp{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>📚 Mijn boekenoverzicht</h1>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Marije Vellinga</p>
+    </footer>
+</body>
+</html>
